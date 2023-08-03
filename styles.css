@@ -1,5 +1,6 @@
-/* --- CSS RESET --- */
-
+  /*-------------------*/
+ /*---- CSS RESET ----*/
+/*-------------------*/
 /*
   1. Use a more-intuitive box-sizing model.
 */
@@ -47,9 +48,9 @@
     isolation: isolate;
   }
 
- /*----------------*/
-/*---- PROJECT ---*/
-
+  /*----------------*/
+ /*---- PROJECT ---*/
+/*----------------*/
 :root {
     --borders: 8px ;
 }
@@ -59,73 +60,195 @@ width: 100%;
 min-width: 100vw;
 height: 100%;
 min-height: 100vh;
-border: solid black 4px;
 }
 
 main {
 display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: repeat(5, 1fr);
-gap: 10px;
+grid-template-columns: 250px repeat(4, 1fr);
+grid-template-rows: 150px repeat(4, 1fr);
 }
 
 
   /*---------------------*/
- /* --- SIDEBAR/NAV ----*/
-
-#sidebar-nav {
+ /*---- SIDEBAR/NAV ----*/
+/*---------------------*/
+#sidebar {
     display: flex;
     flex-direction: column;
-    border: dotted black 4px;
-    background-color: rgb(169, 233, 255);
+    background-color: rgb(0, 157, 255);
     grid-row: span 5 ;
-    gap: 7%;
-    padding: 7%;
+    padding: 1.2rem;
+    gap: 5rem;
+    color: white;
+    font-size: 100%;
 }
 
 #img-container {
-    width: 30%;
+    width: 100%;
     height: 10%;
-    border: solid black 3px;
 }
 
 #sub-navs {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 6fr;
+    grid-template-rows: repeat(6 1fr);
+    justify-content: center; 
+    align-content: center; 
+    row-gap: 3%; 
+    column-gap: 10%;
+    align-items: center; 
 
-    width: 90%;
+    width: 100%;
     height: 36%;
-    background-color: rgb(71, 145, 170);
+    list-style-type: none;
+}
+
+.nav-img {
+    height: 70%;
+    max-height: 100%;
 }
 
 #settings-nav {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: 3fr;
+    justify-content: center; 
+    align-content: center; 
+    row-gap: 3%; 
+    column-gap: 10%;
+    align-items: center; 
 
     width: 90%;
     height: 18%;
-    background-color: rgb(71, 145, 170);
+    list-style-type: none;
+}
+
+#settings-nav img {
+    height: 60%;
+    max-height: 100%;
+}
+
+li {
+    display: inline;
+    font-size: 120%;
+    grid-column: 2 / 3;
+    vertical-align: middle;
 }
 
 
   /*----------------*/
- /* --- HEADER ----*/
-
+ /*---- HEADER ----*/
+/*----------------*/
 #header {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    width: 100%;
-    background-color: rgba(255, 255, 157, 0.954);border: dotted black 4px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    padding: 1%;
+    width: auto;
+    background-color: white;
     grid-column: span 4 ;
 }
 
+#search {
+    padding: 0.5rem;
+    margin-left: 5%;
+    grid-column: span 2;
+    border-radius: var(--borders);
+}
 
- /*---------------------------*/
-/*---- CONTENT CONTAINER ----*/
+#search > * {
+    display: inline;
+}
 
+#search-icon {
+    align-self: center;
+    height: 1.5rem;
+}
+
+#search-bar {
+    width: 90%;
+    height: 1.5rem;
+    border: none;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
+}
+
+#user-profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 7%;
+    gap: 5% ;
+    grid-column: 3 / 5;   
+    border-radius: var(--borders);
+}
+
+#user-profile > * {
+    display: inline;
+}
+
+#bell-icon {
+    height: 1.5rem;
+}
+
+#user-admin-img {
+    object-fit: cover;
+    width: 3rem;
+    height: 3rem;
+    background-color: yellow;
+    border-radius: 100%;
+}
+
+#user-greet {
+    display: grid;
+    margin-left: 5%;
+    grid-template-columns:  4.5rem 1fr;
+    gap: 2%;
+    grid-area: 2 / 1 / 4 / 3;
+    border-radius: var(--borders);
+}
+
+#user-greet * {
+    display: inline;
+}
+
+#greet-admin-img {
+    object-fit: cover;
+    width: 4.5rem;
+    height: 4.5rem;
+    background-color: yellow;
+    border-radius: 100%;
+}
+
+#greeting-msg {
+    margin-top: 1%;
+}
+
+#actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    grid-area: 2 / 3 / 4 / 5;
+    border-radius: var(--borders);
+    margin-right: 7%;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    margin-top: 5%;
+    font-size: 1.1em;
+    color: white;
+    background-color: rgb(0, 157, 255);
+    height: clamp(2rem, 2.5vw, 100%);
+    width: 25%;
+    min-width: 60px;
+}
+
+
+  /*---------------------------*/
+ /*---- CONTENT CONTAINER ----*/
+/*---------------------------*/
 #content-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -133,30 +256,27 @@ gap: 10px;
     width: 100%;
     gap: 3%;
     padding: 3%;
-    background-color: rgb(216, 216, 216);
-    border: dotted black 4px;
+    background-color: rgb(230, 230, 230);
     grid-area: 2 / 2 / 6 / 6 ;
 }
 
 #projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows:repeat(3, 1fr);
     grid-area: 1 / 1 / 3 / 4;
     padding: 1%;
     gap: 4%;
 }
 
 #announcements {
-    background-color: pink;
-    border: solid purple;
+    background-color: white;
     grid-area: 1 / 4 / 2 / 6;
     border-radius: var(--borders);
 }
 
 #trending {
-    background-color: moccasin;
-    border: solid purple;
+    background-color: white;
     grid-area: 2 / 4 / 3 / 6;
     border-radius: var(--borders);
 }
@@ -164,5 +284,5 @@ gap: 10px;
 .project-card {
     border-radius: var(--borders);
     padding: 5%;
-    border: solid red 2px;
+    background-color: white;
 }
