@@ -61,16 +61,14 @@
 
 body, main {
   width: 100%;
-  min-width: 100vw;
   height: 100%;
-  min-height: 100vh;
   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 main {
   display: grid;
   grid-template-columns: 250px repeat(4, 1fr);
-  grid-template-rows: 150px repeat(3, 1fr);
+  grid-template-rows: 140px repeat(3, 1fr);
 }
 
 
@@ -78,14 +76,12 @@ main {
  /*---- SIDEBAR/NAV ----*/
 /*---------------------*/
 #sidebar {
-  display: flex;
-  flex-direction: column;
-    background-color: rgb(0, 157, 255);
+  background-color: rgb(0, 157, 255);
+  grid-column: span 1;
   grid-row: span 5 ;
   padding: 1.2rem;
-  gap: 5rem;
   color: white;
-  font-size: 100%;
+  font-size: 1rem;
   transition: 0.5s ;
 }
 
@@ -97,15 +93,14 @@ main {
 #sub-navs {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(6 1fr);
-  justify-content: center; 
-  align-content: center; 
-  row-gap: 3%; 
-  column-gap: 10%;
+  grid-template-rows: repeat(9 1fr);
+  margin-top: 50px;
+  row-gap: 10px; 
+  column-gap: 10px;
   align-items: center; 
 
   width: 100%;
-  height: 36%;
+  height: 60%;
   list-style-type: none;
 }
 
@@ -114,42 +109,33 @@ main {
   max-height: 100%;
 }
 
-#settings-nav {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 3fr;
-  justify-content: center; 
-  align-content: center; 
-  row-gap: 3%; 
-  column-gap: 10%;
-  align-items: center; 
-
-  width: 90%;
-  height: 18%;
-  list-style-type: none;
-}
-
-#settings-nav img {
-  height: 60%;
-  max-height: 100%;
-}
-
 li {
   display: inline;
   font-size: 120%;
   grid-column: 2 / 3;
   vertical-align: middle;
+  transition: 0.2s ease-in-out;
 }
 
-@media screen and (max-width: 890px) {
+li:hover {
+  cursor:grab;
+  font-size: 130%;
+}
+
+@media screen and (max-width: 1030px) {
   main {
     grid-template-columns: 70px repeat(4, 1fr);
   }
   #sidebar {
     gap: 0px;
-    padding: 5px;
+    padding: 7px;
     transition: 0.5s ;
   }
+
+  #img-container {
+    display: none;
+  }
+
   #sub-navs {
     display: flex;
     flex-direction: column;
@@ -159,29 +145,33 @@ li {
     align-content: center; 
     gap: 3vh; 
     width: 100%;
-    height: 50%;
+    height: 500px;
     list-style-type: none;
   }
+
   ul li {
     display: none;
   }
-  #settings-nav {
-  display: flex;
-  flex-direction: column;
-  padding: 0px;
-  justify-content: center; 
-  align-content: center; 
-  margin-top: 50px;
-  gap: 3vh; 
-  align-items: center; 
 
-  width: 90%;
-  height: 18%;
-  list-style-type: none;
+.nav-img {
+  height: 70%;
+  max-height: 100%;
+  transition: 0.5s ease-out;
+}
+
+.nav-img:hover {
+  cursor:grab;
+  height: 80%;
+}
+
+@media screen and (max-width: 450px){
+  main {
+    grid-template-columns: 45px repeat(4, 1fr);
   }
-  .nav-img {
-   height: 10%;
+  #bell-icon {
+    display: none;
   }
+}
 }
 
 
@@ -290,15 +280,23 @@ button {
   border-radius: 10px;
   margin-top: 5%;
   margin-left: 5px;
-  font-size: 1.1em;
+  font-size: max(1em, 100%);
   color: white;
   background-color: rgb(0, 157, 255);
   height: clamp(2rem, 2.5vw, 100%);
   width: 25%;
   min-width: 60px;
+  box-shadow: inset 0 0 0 0 white;
+  transition: 0.5s ease-in-out;
 }
 
-@media screen and (max-width: 890px) {
+button:hover {
+  color: rgb(0, 157, 255);
+  box-shadow: inset 300px 0 0 0 white;
+  border: solid rgb(0, 157, 255) 2px;
+}
+
+@media screen and (max-width:1030px) {
   #user-greet {
     display: none;
   }
@@ -325,10 +323,9 @@ button {
   }
   button {
     height: clamp(3.5rem, 5vw, 100%);
-    width: 25%;
-    min-width: 60px;
+    width: 33%;
+    min-width: 64px;
   }
-
 }
 
 
@@ -347,6 +344,7 @@ button {
 }
 
 #project-section {
+  overflow-x:scroll ;
   grid-area: 1 / 1 / 3 / 4;
 }
 
@@ -365,11 +363,20 @@ button {
 }
 
 .project-card {
+  display: grid;
+  grid-template-rows: 40px 1fr 20px;
   border-radius: var(--borders);
   padding: 5%;
   background-color: rgb(255, 255, 255);
   box-shadow: var(--box-shadow);
 }
+
+.view-icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5%;
+}
+
 
 #announcements {
   display: flex;
